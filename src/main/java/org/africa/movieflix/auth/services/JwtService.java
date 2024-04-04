@@ -8,7 +8,7 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
+
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
