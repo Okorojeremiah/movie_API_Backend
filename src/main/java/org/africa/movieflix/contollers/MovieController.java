@@ -35,7 +35,6 @@ public class MovieController {
         }
         MovieDTO dto = convertToMovieDTO(movieDTO);
         return new ResponseEntity<>(movieService.addMovie(dto, file), HttpStatus.CREATED);
-
     }
 
     @GetMapping("/{movieId}")
