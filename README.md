@@ -26,13 +26,13 @@ This MovieAPI backend application provides CRUD (Create, Read, Update, Delete) f
 5. Run the application: `java -jar target/movie-api-backend.jar`
 
 ## Endpoints
-- **POST /api/auth/signin:** Endpoint for user authentication and receiving JWT token.
-- **POST /api/auth/signup:** Endpoint for user registration.
-- **GET /api/movies:** Retrieve all movies.
-- **GET /api/movies/{id}:** Retrieve a specific movie by ID.
-- **POST /api/movies:** Create a new movie record.
-- **PUT /api/movies/{id}:** Update an existing movie record.
-- **DELETE /api/movies/{id}:** Delete a movie by ID.
+- **POST /api/auth/login:** Endpoint for user authentication and receiving JWT token.
+- **POST /api/auth/register:** Endpoint for user registration.
+- **GET /api/movie/all** Retrieve all movies.
+- **GET /api/movie/{movieId}:** Retrieve a specific movie by ID.
+- **POST /api/movie/add-movie** Create a new movie record.
+- **PUT /api/movie/update/{movieId}:** Update an existing movie record.
+- **DELETE /api/movie/delete/{movieId}:** Delete a movie by ID.
 
 ## Security
 - **JWT Token:** Authorization header with Bearer token is required for accessing protected endpoints.
