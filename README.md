@@ -17,6 +17,7 @@ This MovieAPI backend application provides CRUD (Create, Read, Update, Delete) f
 - JWT (JSON Web Tokens)
 - MySQL
 - JPA (Java Persistence API)
+- JavaMail Sender
 
 ## Setup Instructions
 1. Clone the repository: `git clone <repository-url>`
