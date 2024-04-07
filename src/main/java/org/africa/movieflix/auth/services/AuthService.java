@@ -8,6 +8,7 @@ import org.africa.movieflix.auth.utils.AuthResponse;
 import org.africa.movieflix.auth.utils.LoginRequest;
 import org.africa.movieflix.auth.utils.RegisterRequest;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -44,12 +45,17 @@ public class AuthService {
     }
 
     public AuthResponse login(LoginRequest loginRequest) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginRequest.getEmail(),
-                        loginRequest.getPassword()
-                        )
-        );
+
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            loginRequest.getEmail(),
+                            loginRequest.getPassword()
+                    )
+            );
+        }catch (BadCredentialsException ex) {
+            throw new BadCredentialsException("Wrong username or password");
+        }
 
         var user = userRepository.findByEmail(loginRequest.getEmail()).orElseThrow(
                 () -> new UsernameNotFoundException("User not found")

@@ -46,6 +46,9 @@ public class User implements UserDetails {
     @OneToOne(mappedBy = "user")
     private RefreshToken refreshToken;
 
+    @OneToOne(mappedBy = "user")
+    private ForgetPassword forgetPassword;
+
     @Enumerated(EnumType.STRING)
     private UserRole role;
 

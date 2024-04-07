@@ -3,9 +3,9 @@ package org.africa.movieflix.auth.config;
 
 import lombok.RequiredArgsConstructor;
 import org.africa.movieflix.auth.services.AuthFilterService;
+import org.africa.movieflix.auth.services.CustomAuthenticationEntryPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,16 +24,21 @@ public class SecurityConfiguration {
 
     private final AuthFilterService authFilterService;
     private final AuthenticationProvider authenticationProvider;
+    private final CustomAuthenticationEntryPoint authenticationEntryPoint;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/auth/**")
+                        .requestMatchers("/api/v1/auth/**",
+                                "/forgotPassword/verifyEmail/{email}",
+                                "/forgotPassword/verifyOtp/{otp}/{email}",
+                                "/forgotPassword/changePassword/{email}")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
+                .exceptionHandling(ex -> ex.authenticationEntryPoint(authenticationEntryPoint))
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
