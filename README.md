@@ -1,7 +1,7 @@
 # MovieAPI Backend App README
 
 ## Overview
-This MovieAPI backend application provides CRUD (Create, Read, Update, Delete) functionality for managing movies. It integrates JWT (JSON Web Tokens) for authentication and authorization and uses Spring Security for securing endpoints. MySQL is used as the database, and JPA (Java Persistence API) is employed for ORM (Object-Relational Mapping).
+This MovieAPI backend application provides CRUD (Create, Read, Update, Delete) functionality for managing movies. It integrates JWT (JSON Web Tokens) for authentication and authorization and uses Spring Security for securing endpoints. PostgreSQL is used as the database, and JPA (Java Persistence API) is employed for ORM (Object-Relational Mapping).
 
 ## Features
 - **CRUD Operations:** Allows users to Create, Read, Update, and Delete movie records.
@@ -15,7 +15,7 @@ This MovieAPI backend application provides CRUD (Create, Read, Update, Delete) f
 - Spring Boot
 - Spring Security
 - JWT (JSON Web Tokens)
-- MySQL
+- PostgreSQL
 - JPA (Java Persistence API)
 - JavaMail Sender
 
